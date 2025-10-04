@@ -9,6 +9,7 @@ import localFont from "next/font/local";
 import {SettingsProvider, SettingsConsumer, Settings} from "@/components/SettingsProvider";
 import {SessionProvider} from "next-auth/react";
 import {Session} from "next-auth";
+import styles from './PageLayout.module.css'
 
 const myFont = localFont({
 	src: "../../public/fonts/Montserrat-Regular.woff2",
@@ -47,12 +48,12 @@ export default function PageLayout({children, session}: Props) {
 				<SettingsConsumer>
 					{({initialized}: Settings) => {
 						return initialized && (
-							<section style={{padding: 0, margin: 0}}>
-								<nav style={{height: "60px"}}>
+							<section className={styles.root}>
+								<nav className={styles.nav}>
 									<NavHeader/>
 								</nav>
-								<main>{children}</main>
-								<footer>
+								<main className={styles.main}>{children}</main>
+								<footer className={styles.footer}>
 									<NavFooter/>
 								</footer>
 							</section>

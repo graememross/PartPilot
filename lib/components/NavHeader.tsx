@@ -119,8 +119,8 @@ export default function NavHeader() {
   return (
     <Box>
       <header className={classes.header}>
-        <Container size={"md"} p={"sm"} h={60}>
-          <Group justify="space-between">
+        <Container fluid p={"sm"} h={60}>
+          <Group className={classes.inner}>
             <Image
               src="/images/PartPilot-Logo.png"
               alt="Logo"
@@ -141,7 +141,7 @@ export default function NavHeader() {
               hiddenFrom="sm"
               c={"gray"}
             />
-            <Group visibleFrom="sm">
+            <Group visibleFrom="sm" className={classes.actions}>
               <Button
                 rightSection={<IconPlus />}
                 onClick={() => {

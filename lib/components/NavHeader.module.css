@@ -1,6 +1,7 @@
 .header {
   height: rem(56px);
-  margin-bottom: rem(120px);
+  /* reduce large bottom spacing so header doesn't leave a big gap */
+  margin-bottom: rem(24px);
   background-color: var(--mantine-color-body);
 
   border-bottom: rem(1px) solid
@@ -8,10 +9,13 @@
 }
 
 .inner {
-  height: rem(56px);
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-left: rem(12px);
+  padding-right: rem(12px);
 }
 
 .link {
@@ -41,5 +45,12 @@
   top: 0;
   right: 0;
   margin: 12px;
+}
+
+.actions {
+  margin-left: auto; /* push this group to the right */
+  display: flex;
+  align-items: center;
+  gap: rem(8px);
 }
 
