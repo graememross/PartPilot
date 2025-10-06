@@ -34,7 +34,10 @@ type NavLink = {
 
 const links: Array<NavLink> = [
   { link: "/", label: "Dashboard" },
-  { link: "/categories", label: "Categories" }
+  { link: "/categories", label: "Categories" },
+  { link: "/project", label: "Projects"},
+  { link: "/warehouse", label: "Warehouses"},
+  { link: "/store", label: "Stores"}
   // { link: "/about", label: "About Us" },
 ];
 

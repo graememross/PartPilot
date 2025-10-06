@@ -23,6 +23,17 @@ async function main() {
             quantity: 20,
             capacitance: 1,
             prices: []
+        }
+    })
+
+    await prisma.user.upsert({
+        where: {id: 'cmgc95kgx0000mvdtfivyejxg'},
+        update: {},
+        create: {
+            id: 'cmgc95kgx0000mvdtfivyejxg',
+            name: 'Graeme',
+            email: 'graeme.ross@rossathome.co.uk',
+            password: '$2b$10$qMTLtuSbrv0.05TDwG8Y7eQrms6n5NPqewYL/hsD3LbLVZgRdRVEC',
         },
     })
     await prisma.parts.upsert({

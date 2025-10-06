@@ -4,7 +4,8 @@ export interface PartState {
     title?: string; //title
 
     quantity: number; //quantity
-
+    onOrder?: number;
+    reserved?: number;
     productId?: number; //productId
     productCode: string; //productCode
     productModel?: string; //productModel

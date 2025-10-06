@@ -17,6 +17,10 @@ model Parts {
   id       Int     @id @default(autoincrement())
   title    String?
   quantity Int     @default(0)
+  onOrder  Int     @default(0)
+  reserved Int     @default(0)
+  storeId  String?
+  store    Store?  @relation(fields: [storeId], references: [id])
 
   productId          Int?
   productCode        String  @unique
@@ -77,14 +81,17 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
+  id            String      @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?     @unique
   emailVerified DateTime?
   password      String?
   image         String?
   accounts      Account[]
   sessions      Session[]
+  projects      Project[]
+  Store         Store[]
+  Warehouse     Warehouse[]
 }
 
 model VerificationToken {
@@ -93,4 +100,45 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Project {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  bomCsv      String?
+  version     String?
+  ownerId     String
+  owner       User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  @@index([ownerId])
+}
+
+model Store {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  parts       Parts[]
+  ownerId     String
+  owner       User     @relation(fields: [ownerId], references: [id])
+
+  @@unique([name, ownerId])
+}
+
+model Warehouse {
+  id          String   @id @default(uuid())
+  name        String
+  description String
+  url         String   @default("/")
+  canDemand   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  ownerId     String
+  owner       User     @relation(fields: [ownerId], references: [id])
+
+  @@unique([name, ownerId])
 }

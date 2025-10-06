@@ -116,7 +116,7 @@ export default function DashboardPage({
 
 	const [parts, setParts] = useState<PartState[]>(loadedParts);
 	const [isSearchResult, setIsSearchResult] = useState(
-		searchCatalog ? searchCatalog.length > 0 : false ?? false
+		searchCatalog ? searchCatalog.length > 0 : false
 	);
 	const [activePage, setPage] = useState(1);
 
@@ -174,6 +174,7 @@ export default function DashboardPage({
 				console.log("onScan already attached to document");
 			}
 		}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const updatePartInState = (part: PartState) => {
@@ -534,6 +535,8 @@ export default function DashboardPage({
 										<Table.Th>ProductCode</Table.Th>
 										<Table.Th>Quantity</Table.Th>
 										<Table.Th>Quantity Actions</Table.Th>
+										<Table.Th>On Order</Table.Th>
+										<Table.Th>Reserved</Table.Th>
 										<Table.Th>ProductID</Table.Th>
 										<Table.Th>ProductModel</Table.Th>
 										<Table.Th>Description</Table.Th>
@@ -609,7 +612,7 @@ function PartItem({
 			<Table.Td>
 				<img
 					src={part.productImages[0]}
-					// alt={part.title}
+				    alt={part.title}
 					width="100"
 					height="100"
 				/>
@@ -631,6 +634,8 @@ function PartItem({
 			</Table.Td>
 			<Table.Td>{part.productCode}</Table.Td>
 			<Table.Td>{part.quantity}</Table.Td>
+			<Table.Td>{part.onOrder}</Table.Td>
+			<Table.Td>{part.reserved}</Table.Td>
 			<Table.Td>
 				<Tabs variant="outline" defaultValue={"add"} w={200}>
 					<Tabs.List justify="center">
