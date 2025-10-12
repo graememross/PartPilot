@@ -139,6 +139,42 @@ model Warehouse {
   updatedAt   DateTime @updatedAt
   ownerId     String
   owner       User     @relation(fields: [ownerId], references: [id])
+  Order       Order[]
 
   @@unique([name, ownerId])
+}
+
+model Order {
+  id          String      @id @default(uuid())
+  orderNum    String      @unique
+  warehouse   Warehouse   @relation(fields: [warehouseId], references: [id])
+  warehouseId String
+  Vendor      String
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  lineItems   LineItems[]
+  allReceived Boolean     @default(false)
+}
+
+model LineItems {
+  id           String  @id @default(uuid())
+  vendorPN     String
+  manPN        String
+  Manufacturer String
+  customerNo   String?
+  Package      String
+  Description  String
+  RoHS         String
+  Quantity     Int
+  UnitPrice    Decimal
+  totalPrice   Decimal
+  leadTime     Int?
+  LotNo        Int?
+  Status       String
+  Order        Order?  @relation(fields: [orderId], references: [id])
+  orderId      String?
+
+  received Boolean @default(false)
+
+  @@unique([vendorPN, orderId], name: "orderId_vendorPN")
 }

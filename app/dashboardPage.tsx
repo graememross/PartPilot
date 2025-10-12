@@ -634,8 +634,6 @@ function PartItem({
 			</Table.Td>
 			<Table.Td>{part.productCode}</Table.Td>
 			<Table.Td>{part.quantity}</Table.Td>
-			<Table.Td>{part.onOrder}</Table.Td>
-			<Table.Td>{part.reserved}</Table.Td>
 			<Table.Td>
 				<Tabs variant="outline" defaultValue={"add"} w={200}>
 					<Tabs.List justify="center">
@@ -701,6 +699,8 @@ function PartItem({
 					</Tabs.Panel>
 				</Tabs>
 			</Table.Td>
+			<Table.Td>{part.onOrder}</Table.Td>
+			<Table.Td>{part.reserved}</Table.Td>
 			<Table.Td>{part.productId}</Table.Td>
 			<Table.Td>{part.productModel}</Table.Td>
 			<Table.Td>{part.productDescription}</Table.Td>

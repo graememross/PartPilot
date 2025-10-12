@@ -2,6 +2,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { compare } from "bcrypt";
 import prisma from '@/lib/prisma';
 import { updateStoresEtc } from "../register/route";
+import { NodeNextRequest } from "next/dist/server/base-http/node";
 
 const authOptions = {
     providers: [

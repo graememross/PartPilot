@@ -2,8 +2,9 @@
 # This script sets the permissions for the Docker socket to allow non-root users to access it.
 # It should be run after the container is created.
 
-#sudo chown root:1000 /var/run/docker.sock
+sudo chown root:docker /var/run/docker.sock
 sudo chmod 660 /var/run/docker.sock
+
 
 # Check to see if the postgres database has been started
 # If it has, then we can run the setup script to create the database and user
